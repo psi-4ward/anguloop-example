@@ -1,0 +1,8 @@
+<!-- TODO make header sticky -->
+<div class="text-center" style="border-bottom: 1px solid #E8E8E8">
+  <a class="btn btn-primary pull-left" ng-click="FormController.back()"><i class="fa fa-chevron-left"></i> zurück</a>
+  <a class="btn btn-success pull-right" ng-show="sfform.$dirty" ng-disable="sfform.$invalid" ng-click="FormController.save()">speichern</a>
+  <a class="btn btn-danger pull-right" ng-show="sfform.$pristine" ng-disable="sfform.$invalid" ng-click="FormController.delete()">löschen</a>
+
+  <div style="line-height: 36px;margin: 0 100px;">{{FormController.heading}}</div>
+</div>

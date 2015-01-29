@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "angular": [],
+    "bower": {}
+  },
+  "js": "primus.js"
+}

@@ -1,0 +1,40 @@
+{
+  "name": "anguloop-example",
+  "description": "Example app using anguloop",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": {
+    "name": "Christoph Wiechert",
+    "email": "wio@psitrax.de",
+    "url": "http://4wardmedia.de/"
+  },
+  "scripts": {
+    "install": "[ -d node_modules/gulpsi ] && (_GULP=`command -v gulp` ; _BOWER=`command -v bower` ; [ \"$_GULP\" == \"\" ] && echo \"gulp not installed, run: sudo npm install -g gulp\" ; [ \"$_BOWER\" == \"\" ] && echo \"bower not installed, run: sudo npm install -g bower\" ; [ \"$_GULP\" != \"\" -a \"$_BOWER\" != \"\" ] && gulp bower && bower install && gulp build -m) || echo \"WARNING: will not generate frontend in production mode\"",
+    "watch": "command -v nodemon 1>/dev/null && nodemon server.js || echo \"nodemon not installed, please run: sudo npm install -g nodemon \"",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "async": "~0.9.0",
+    "debug": "^2.1.1",
+    "errorhandler": "^1.1.1",
+    "express-virtual-request": "psi-4ward/express-virtual-request",
+    "express-websocket": "psi-4ward/express-websocket",
+    "lodash": "^3.0.0",
+    "loopback": "^2.8.0",
+    "loopback-boot": "^2.4.0",
+    "loopback-datasource-juggler": "^2.7.0",
+    "loopback-packageloader": "psi-4ward/loopback-packageloader",
+    "serve-favicon": "^2.0.1"
+  },
+  "devDependencies": {
+    "gulpsi": "psi-4ward/gulpsi"
+  },
+  "optionalDependencies": {
+    "loopback-explorer": "^1.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/psi-4ward/anguloop-example"
+  }
+}

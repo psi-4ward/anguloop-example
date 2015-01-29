@@ -1,0 +1,16 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    "packages/*/angular/",
+    "packages/*/gulpsi.json"
+  ],
+  "verbose": false,
+  "watch": [
+    "packages/",
+    "server.js"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js json"
+}

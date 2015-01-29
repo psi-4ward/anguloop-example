@@ -1,0 +1,50 @@
+{
+  "name": "Car",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "mongodb": {
+      "collection": "car"
+    }
+  },
+  "schema": {
+    "type": "object",
+    "title": "Cars",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string"
+      },
+      "maker": {
+        "title": "Maker",
+        "type": "string"
+      },
+      "model": {
+        "title": "Model",
+        "type": "string",
+        "maxLength": 20,
+        "validationMessage": "Don't be greedy!"
+      },
+      "color": {
+        "title": "Color",
+        "type": "string"
+      },
+      "drivers": {
+        "title": "Drivers",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "title": "Name"
+        }
+      }
+    },
+    "required": [
+      "name"
+    ]
+  },
+  "properties": {
+  },
+  "validations": [],
+  "acls": [],
+  "methods": []
+}

@@ -1,0 +1,57 @@
+header {
+  font-size: 16px;
+  .lh-box-shadow(0 1px 10px rgba(20, 20, 20, 0.5));
+  background-color: @gray-dark;
+  margin-bottom: 10px;
+  color: @gray-lighter;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  > div {
+    display: inline-block;
+  }
+
+  .btn.btn-flat:not(.btn-link), .btn-default.btn-flat:not(.btn-link) {
+    padding: 5px 10px;
+    font-size: 16px;
+    color: @gray-lighter;
+    border-radius: 0;
+  }
+
+  .popover {
+    .btn.btn-flat:not(.btn-link), .btn-default.btn-flat:not(.btn-link) {
+      color: inherit;
+      font-size: 12px;
+    }
+  }
+
+    .breadcrumb {
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+
+    .btn.btn-flat {
+      font-weight: normal;
+      padding: 5px 5px;
+      &:before {
+        padding: 0 5px 0 0;
+        content: @fa-var-caret-right;
+        .fa;
+      }
+    }
+  }
+
+  .popover {
+    background: #fff;
+    color: @gray-dark;
+    &.bottom-right {
+      .arrow {
+        margin-left: -27px;
+        left: 100%;
+      }
+    }
+  }
+}
