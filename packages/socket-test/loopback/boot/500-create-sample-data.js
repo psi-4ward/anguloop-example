@@ -10,6 +10,7 @@ module.exports = function(app) {
     model: "Octavia III",
     color: 'black'
   }, function(err, data) {
+    if(err) return console.log(err.message || err);
     console.log('Example Car created with ID:%s', data.id);
   });
 
@@ -20,6 +21,7 @@ module.exports = function(app) {
     model: "Multivan",
     color: 'red'
   }, function(err, data) {
+    if(err) return console.log(err.message || err);
     console.log('Example Car created with ID:%s', data.id);
   });
 
@@ -30,6 +32,7 @@ module.exports = function(app) {
     model: "Logan",
     color: 'blue'
   }, function(err, data) {
+    if(err) return console.log(err.message || err);
     console.log('Example Car created with ID:%s', data.id);
   });
 

@@ -7,13 +7,15 @@
       "collection": "car"
     }
   },
-  "schema": {
+  "strictJsonSchema": false,
+  "jsonSchema": {
     "type": "object",
     "title": "Cars",
     "properties": {
       "name": {
         "title": "Name",
-        "type": "string"
+        "type": "string",
+        "maxLength": 15
       },
       "maker": {
         "title": "Maker",
@@ -28,6 +30,9 @@
       "color": {
         "title": "Color",
         "type": "string"
+      },
+      "year": {
+        "type": "number"
       },
       "drivers": {
         "title": "Drivers",

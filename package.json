@@ -25,7 +25,8 @@
     "loopback-boot": "^2.4.0",
     "loopback-datasource-juggler": "^2.7.0",
     "loopback-packageloader": "psi-4ward/loopback-packageloader",
-    "serve-favicon": "^2.0.1"
+    "serve-favicon": "^2.0.1",
+    "tv4": "^1.1.9"
   },
   "devDependencies": {
     "gulpsi": "psi-4ward/gulpsi"
