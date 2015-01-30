@@ -1,5 +1,9 @@
 # anguloop idea/poc of loopback 4 angular
 
+***Searching for contributors*** 
+Contact me: Skype: psitrax ; IRC: Psi|4ward@freenode ; wio[at]psitrax.de
+
+
 * RESTapi accessable through Websockets [express-websocket](https://github.com/psi-4ward/express-websocket) 
 * Requesting a list-endpoint (`/api/users`) via socket results in an update subscription
 * Broadcast model changes to all subscribeders (like [SailsJS](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub))
