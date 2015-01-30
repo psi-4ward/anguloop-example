@@ -21,9 +21,7 @@ npm start
 
 ### Todo
 * Refactor [modelChange2socket.js](https://github.com/psi-4ward/anguloop-example/blob/master/packages/socket-test/loopback/boot/modelChange2socket.js)
-* Generic `_meta` endpoint
 * anguloop model/collection service
-* JsonSchema validation
 
 ### RESTapi accessable through Websockets
 [express-websocket](https://github.com/psi-4ward/express-websocket) pushes socket *json-web-requests* into the express routing
@@ -74,8 +72,16 @@ suggested (but configurable) filestructure
 
 Or split into angular and loopback packages? Whats your opinion?
 
-#### npm-installed Packages
+### npm-installed Packages
 
 * gulpsi findes it by searching for `gulpsi.json`
 * loopback-packageloader inspects `package.json` and searches for `anguloopModule: true` key
 
+### JsonSchema endpoint and validation
+
+Define a JsonSchem in your `Model.json` using the `jsonSchema` property. You could also mark this
+schema as **strict** using `strictJsonSchema: true`. A strict schema does not allow additional 
+properties.
+
+The Schema gets exposed via `_meta` endpoint for each Model. The fronend can request the Schema 
+and hand it over to angular-schema-form.
