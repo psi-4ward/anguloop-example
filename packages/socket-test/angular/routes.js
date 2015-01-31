@@ -6,8 +6,8 @@ app.config(function($stateProvider) {
     controllerAs: "CarsController",
     templateUrl: 'socket-test/templates/cars.html',
     resolve: {
-      ModelSchema: function($httpSock) {
-        return $httpSock.get('/cars/_meta').getBody();
+      Cars: function(ApiLoop) {
+        return ApiLoop.collection('cars').fetch();
       }
     }
   });

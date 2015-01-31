@@ -1,5 +1,9 @@
 {
   "Car": {
     "dataSource": "db"
+  },
+  "Driver": {
+    "dataSource": "db"
   }
+
 }

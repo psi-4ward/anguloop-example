@@ -1,0 +1,43 @@
+{
+  "name": "Driver",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "mongodb": {
+      "collection": "driver"
+    }
+  },
+  "strictJsonSchema": false,
+  "jsonSchema": {
+    "type": "object",
+    "title": "Driver",
+    "properties": {
+      "name": {
+        "title": "Name",
+        "type": "string",
+        "maxLength": 15
+      },
+      "age": {
+        "title": "Age",
+        "type": "number",
+        "min": 18
+      }
+    },
+    "required": [
+      "name",
+      "age"
+    ]
+  },
+  "relations": {
+    "car": {
+      "type": "belongsTo",
+      "foreignKey": "carId",
+      "model": "Car"
+    }
+  },
+  "properties": {
+  },
+  "validations": [],
+  "acls": [],
+  "methods": []
+}

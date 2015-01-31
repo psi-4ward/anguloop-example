@@ -23,15 +23,18 @@
 
   <div class="col-sm-4">
     <div class="panel panel-primary">
-      <div class="panel-heading">{{CarsController.car.id?'Edit':'New'}} car</div>
+      <div class="panel-heading">{{CarsController.newEditCar.id?'Edit':'New'}} car</div>
       <div class="panel-body">
-        <form name="carForm"
+        <form name="carForm" ng-show="CarsController.newEditCar"
               sf-schema="CarsController.schema"
               sf-form="CarsController.form"
-              sf-model="CarsController.car"
+              sf-model="CarsController.newEditCar"
               ng-submit="CarsController.save()">
-
         </form>
+
+        <a ng-click="CarsController.newCar()" ng-hide="CarsController.newEditCar" class="btn btn-primary">
+          <i class="fa fa-plus"></i> new car
+        </a>
       </div>
     </div>
   </div>

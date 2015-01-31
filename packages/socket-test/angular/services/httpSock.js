@@ -38,16 +38,16 @@ app.provider('$httpSock', function() {
     function serverRequest(config) {
       if(!config.type) config.type = 'json-web-request';
       var defer = $q.defer();
-      $log.info('$httpSock request', config);
+      if($httpSockProvider.debug) console.info('$httpSock request', config);
       websocket.writeAndWait(config, function(jres) {
         jres = angular.extend(config, jres); // makes this sens?
         jres.data = jres.body; // $http compat
 
         if(jres.error || jres.statusCode < 200 || jres.statusCode >= 300) {
-          if($httpSockProvider.debug) $log.error('$httpSock response', jres);
+          if($httpSockProvider.debug) console.error('$httpSock response', jres);
           defer.reject(jres);
         } else {
-          if($httpSockProvider.debug) $log.info('$httpSock response', jres);
+          if($httpSockProvider.debug) console.info('$httpSock response', jres);
           defer.resolve(jres);
         }
       });
@@ -133,22 +133,25 @@ app.provider('$httpSock', function() {
 
     $httpSock.on = function(event, cb) {
       websocket.on(event, function(data) {
-        if($httpSockProvider.debug) $log.info('$httpSock "'+event+'" received, delegate to ' + cb.toString().split('\n')[0] + '...', data);
+        if($httpSockProvider.debug) console.info('$httpSock "'+event+'" received, delegate to ' + cb.toString().split('\n')[0] + '...', data);
         $timeout(cb.bind($httpSock, data));
       });
     };
     $httpSock.once = function(event, cb) {
       websocket.once(event, function(data) {
-        if($httpSockProvider.debug) $log.info('$httpSock "'+event+'" received, delegate to ' + cb.toString().split('\n')[0] + '...', data);
+        if($httpSockProvider.debug) console.info('$httpSock "'+event+'" received, delegate to ' + cb.toString().split('\n')[0] + '...', data);
         $timeout(cb.bind($httpSock, data));
       });
     };
 
     $httpSock.rawSocket = websocket;
 
-    $httpSock.$modelUpdater = function(modelName, arrModels) {
-      $httpSock.on('data', function(msg) {
+    $httpSock.$modelUpdater = function(modelName, arrModels, filter) {
+      function updater(msg) {
         if(!angular.isObject(msg)) return;
+
+        // skip if the filter dont match
+        if(filter && !angular.equals(msg.filter, filter)) return;
 
         var i;
         switch(msg.type) {
@@ -184,7 +187,11 @@ app.provider('$httpSock', function() {
             _.remove(arrModels, msg.where);
             break;
         }
-      });
+      }
+
+      $httpSock.on('data', updater);
+
+      return updater;
     };
 
     return $httpSock;

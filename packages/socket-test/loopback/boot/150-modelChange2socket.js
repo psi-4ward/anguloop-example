@@ -20,6 +20,8 @@ module.exports = function(app) {
     // only for websockets, this info comes from express-websocket
     if(!ctx.req.isWebsocket || ctx.method.name !== 'find') return next();
 
+    // ctx.args.filter
+
     // spark is the Primus websocket connection
     var spark = ctx.req.spark;
 

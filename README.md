@@ -8,7 +8,7 @@ Contact me: Skype: psitrax ; IRC: Psi|4ward@freenode ; wio[at]psitrax.de
 * Requesting a list-endpoint (`/api/users`) via socket results in an update subscription
 * Broadcast model changes to all subscribeders (like [SailsJS](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub))
 * [$http](https://docs.angularjs.org/api/ng/service/$http) compatible [$httpSock](https://github.com/psi-4ward/anguloop-example/blob/master/packages/socket-test/angular/services/httpSock.js) angular service
-* [Restangular](https://github.com/mgonto/restangular)-like angular service to consume the RESTapi (todo)
+* [ApiLoop](https://github.com/psi-4ward/anguloop-example/blob/master/packages/socket-test/angular/services/ApiLoop/ApiLoop) angular service as Model-Layer
 
 * [JsonSchema](http://json-schema.org/) support for [angular-schema-form](https://github.com/Textalk/angular-schema-form) and validation 
 * (npm-installable) Packages support containing Loopback and Angular code (like [MeanJS](http://learn.mean.io/#m-e-a-n-stack-packages-files-structure))

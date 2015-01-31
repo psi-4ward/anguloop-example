@@ -1,18 +1,19 @@
 /* global app */
-app.controller('CarsController', function($httpSock, ModelSchema, PsiDialog, $scope) {
+app.controller('CarsController', function(Cars, $httpSock, PsiDialog, $scope) {
   var CarsController = this;
-  this.cars = [];
+  this.cars = Cars.models;
 
-  // get results in a subscription
-  $httpSock.get('/Cars').then(function(jres) {
-    angular.extend(CarsController.cars , jres.body);
+/*
+  this.drivers = Cars.findById(1).collection('drivers').fetch().then(function(Drivers) {
+    var d = Drivers.createModel({name: 'Nina', age: 23});
+    d.save();
   });
 
-  // update the cars on socket events
-  $httpSock.$modelUpdater('Car', this.cars);
+  Cars.get('random');
+*/
 
 
-  this.schema = ModelSchema;
+  this.schema = Cars._config.schema;
   this.form = ['*', {
     type: "submit",
     title: "Save"
@@ -21,26 +22,24 @@ app.controller('CarsController', function($httpSock, ModelSchema, PsiDialog, $sc
   this.destroy = function(car) {
     PsiDialog.confirm('Really destroy ' + car.name + '?')
       .then(function() {
-        $httpSock.delete('/Cars/'+car.id);
-        // No cars-array update here, car gets removed through socket model:deleted
+        car.destroy();
       });
   };
 
   this.edit = function(car) {
-    CarsController.car = angular.copy(car);
+    CarsController.newEditCar = angular.copy(car);
+
+  };
+
+  this.newCar = function() {
+    CarsController.newEditCar = Cars.createModel();
   };
 
   this.save = function() {
     function done() {
       $scope.carForm.$setPristine();
-      CarsController.car = {};
+      CarsController.newEditCar = false;
     }
-    var car = CarsController.car;
-    if(car.id) {
-      $httpSock.put('/Cars/' + car.id, car).then(done);
-    } else {
-      $httpSock.post('/Cars', car).then(done);
-    }
-    // No cars-array update here, car gets updated through socket model:changed
+    CarsController.newEditCar.save().then(done);
   };
 });

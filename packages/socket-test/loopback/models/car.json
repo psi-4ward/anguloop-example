@@ -19,7 +19,8 @@
       },
       "maker": {
         "title": "Maker",
-        "type": "string"
+        "type": "string",
+        "default": "VW"
       },
       "model": {
         "title": "Model",
@@ -33,14 +34,6 @@
       },
       "year": {
         "type": "number"
-      },
-      "drivers": {
-        "title": "Drivers",
-        "type": "array",
-        "items": {
-          "type": "string",
-          "title": "Name"
-        }
       }
     },
     "required": [
@@ -48,6 +41,13 @@
     ]
   },
   "properties": {
+  },
+  "relations": {
+    "drivers": {
+      "type": "hasMany",
+      "foreignKey": "carId",
+      "model": "Driver"
+    }
   },
   "validations": [],
   "acls": [],
