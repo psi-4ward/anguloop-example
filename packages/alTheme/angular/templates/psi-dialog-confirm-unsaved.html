@@ -1,0 +1,15 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" style="min-width: 410px">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3 class="modal-title" ng-bind="title"></h3>
+        <div class="content small" ng-show="content" ng-bind="content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="save()"><i class="fa fa-save"></i> {{saveLabel || 'Save'}}</button>
+        <button type="button" class="btn btn-danger" ng-click="discard()"><i class="fa fa-times"></i> {{discardLabel || 'Dont\'t save'}}</button>
+        <button type="button" class="btn btn-primary" ng-click="cancel()">{{cancelLabel || 'Cancel'}}</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h3 class="modal-title" ng-bind="title"></h3>
+        <div class="content small" ng-show="content" ng-bind="content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" ng-click="ok()"><i class="fa fa-check"></i> {{okLabel || 'OK'}}</button>
+        <button type="button" class="btn btn-danger" ng-click="cancel()"><i class="fa fa-times"></i> {{cancelLabel || 'cancel'}}</button>
+      </div>
+    </div>
+  </div>
+</div>

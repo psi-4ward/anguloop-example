@@ -8,12 +8,13 @@ Contact me: Skype: psitrax ; IRC: Psi|4ward@freenode ; wio[at]psitrax.de
 * Requesting a list-endpoint (`/api/users`) via socket results in an update subscription
 * Broadcast model changes to all subscribeders (like [SailsJS](http://sailsjs.org/#/documentation/reference/websockets/resourceful-pubsub))
 * [$http](https://docs.angularjs.org/api/ng/service/$http) compatible [$httpSock](https://github.com/psi-4ward/anguloop-example/blob/master/packages/socket-test/angular/services/httpSock.js) angular service
-* [ApiLoop](https://github.com/psi-4ward/anguloop-example/blob/master/packages/socket-test/angular/services/ApiLoop/ApiLoop) angular service as Model-Layer
+* [ApiLoop](https://github.com/psi-4ward/anguloop-example/blob/master/packages/socket-test/angular/services/ApiLoop/ApiLoop.js) angular service as Model-Layer
 
 * [JsonSchema](http://json-schema.org/) support for [angular-schema-form](https://github.com/Textalk/angular-schema-form) and validation 
 * (npm-installable) Packages support containing Loopback and Angular code (like [MeanJS](http://learn.mean.io/#m-e-a-n-stack-packages-files-structure))
 * Gulp based build system [Gulpsi](https://github.com/psi-4ward/gulpsi)
 * generator to scaffold new apps (todo)
+
 
 ### Install and usage
 You need [Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md) and [Bower](http://bower.io/#install-bower)
@@ -25,7 +26,16 @@ npm start
 
 ### Todo
 * Refactor [modelChange2socket.js](https://github.com/psi-4ward/anguloop-example/blob/master/packages/socket-test/loopback/boot/modelChange2socket.js)
-* anguloop model/collection service
+* * Respect `filter` param
+* (yeoman) Generator
+* Extract ApiLoop into own project
+* Extreact `jsonschema-validator` and `meta-endpoint` bootscripts into own project
+* Extreact `modelChange2socket` bootscript into own project
+* Documentation
+* MenuService
+
+* frontend base package ([AdminLTE](https://github.com/almasaeed2010/AdminLTE)?) 
+
 
 ### RESTapi accessable through Websockets
 [express-websocket](https://github.com/psi-4ward/express-websocket) pushes socket *json-web-requests* into the express routing
@@ -39,6 +49,7 @@ npm start
 See 
 [modelChange2socket.js](https://github.com/psi-4ward/anguloop-example/blob/master/packages/socket-test/loopback/boot/modelChange2socket.js)
 for an draft
+
 
 ### Packages
 
@@ -76,10 +87,12 @@ suggested (but configurable) filestructure
 
 Or split into angular and loopback packages? Whats your opinion?
 
+
 ### npm-installed Packages
 
 * gulpsi findes it by searching for `gulpsi.json`
 * loopback-packageloader inspects `package.json` and searches for `anguloopModule: true` key
+
 
 ### JsonSchema endpoint and validation
 

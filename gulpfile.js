@@ -9,4 +9,6 @@ $config.pathNormalization = [
   [/^bower_components\//, '']
 ];
 
-$config.libs = ['packages/primus.js'];
+$config.libs = ['packages/anguloop/primus.js'];
+
+$config.watcherRebuildInterval = 5000;

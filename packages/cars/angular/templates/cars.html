@@ -1,0 +1,37 @@
+<div class="row animate" ui-view>
+
+  <div class="col-sm-7">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        Cars
+
+        <a class="btn btn-default btn-sm pull-right" ui-sref=".edit({carId: '_new'})">
+          <i class="fa fa-plus"></i> new Car
+        </a>
+      </div>
+      <div class="panel-body">
+        <p>
+          <input class="form-control" placeholder="search" ng-model="filter">
+        </p>
+          <div ng-repeat="car in CarsController.cars | filter:filter track by car.id"
+               class="slide-up-down-ani row"
+              >
+            <div class="col-xs-3" ui-sref=".edit({carId: car.id})" change-flash="car.name">{{car.name}}</div>
+            <div class="col-xs-2" ui-sref=".edit({carId: car.id})" change-flash="car.make">{{car.make}}</div>
+            <div class="col-xs-3" ui-sref=".edit({carId: car.id})" change-flash="car.model">{{car.model}}</div>
+            <div class="col-xs-2" ui-sref=".edit({carId: car.id})" change-flash="car.color">{{car.color}}</div>
+            <div class="col-xs-2 text-right">
+              <a class="btn btn-sm" ui-sref=".drivers({carId: car.id})">
+                <i class="fa fa-user"></i>
+              </a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-5" ui-view="editCar">
+
+  </div>
+
+</div>

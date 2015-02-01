@@ -1,0 +1,27 @@
+<div class="col-sm-7">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      Drivers
+
+      <a class="btn btn-default btn-sm pull-right" ui-sref=".edit({driverId: '_new'})">
+        <i class="fa fa-plus"></i> new Driver
+      </a>
+    </div>
+    <div class="panel-body">
+      <p>
+        <input class="form-control" placeholder="search" ng-model="filter">
+      </p>
+
+      <div ng-repeat="driver in DriversController.drivers | filter:filter track by driver.id"
+          class="slide-up-down-ani row"
+          >
+        <div class="col-xs-6" ui-sref=".edit({driverId: driver.id})" change-flash="driver.name">{{driver.name}}</div>
+        <div class="col-xs-6" ui-sref=".edit({driverId: driver.id})" change-flash="driver.age">{{driver.age}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-5" ui-view="editDriver">
+
+</div>
