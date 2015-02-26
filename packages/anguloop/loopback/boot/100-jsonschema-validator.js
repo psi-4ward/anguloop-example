@@ -1,4 +1,5 @@
 var tv4 = require('tv4');
+var _ = require('lodash');
 
 module.exports = function(app) {
 
@@ -6,12 +7,17 @@ module.exports = function(app) {
   Object.keys(app.models).forEach(function(m) {
     var Model = app.models[m];
 
-    if(!Model.settings.schema) return;
+    if(!Model.settings.jsonSchema) return;
 
     Model.validate('JsonSchema', function(err) {
       var validator = this;
 
-      var result = tv4.validateMultiple(this.__data, Model.settings.jsonSchema, true, Model.settings.strictJsonSchema || false);
+      var data = _.omit(this, function(val, key) {
+        if(key.substr(0, 1) === '__' || _.isFunction(val) || key === 'errors') return true;
+      });
+      
+      
+      var result = tv4.validateMultiple(data, Model.settings.jsonSchema, true, Model.settings.strictJsonSchema || false);
       if(!result.valid) {
         // Add errors to validator
         result.errors.forEach(function(err) {
@@ -21,7 +27,7 @@ module.exports = function(app) {
             'invalid'
           );
         });
-        err(false); // supporess JsonSchema-Validator error
+        err(false); // suppress JsonSchema-Validator error
       }
     });
   });
